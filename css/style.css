@@ -1,0 +1,103 @@
+html {
+   box-sizing: border-box;
+}
+
+*, ::after, ::before {
+   box-sizing: inherit;
+}
+
+body {
+   background-color: hsl(0, 0%, 90%);
+   font-family: monospace;
+}
+
+.container {
+   background-color: hsl(0, 0%, 20%);
+   margin: 50px auto;
+   width: 430px;
+   height: 480px;
+   border: 1px solid black;
+   box-shadow: 5px 5px 5px 5px black;
+   border-radius: 5px;
+}
+
+.containerDisplay {
+   display: grid;
+   justify-items: center;
+   align-content: center;
+   margin: 20px;
+   width: 90%;
+   height: 75px;
+   border: 1px solid rgb(100, 100, 100);
+}
+
+.inputDisplay {
+   font-family: 'Quantico', sans-serif;
+   margin: 5px;
+   width: 90%;
+   height: 60px;
+   border: 1px solid black;
+   font-size: 50px;
+   text-align: right;
+   padding: 0 10px;
+}
+
+.containerKeys {
+   display: grid;
+   grid-template-columns: auto auto auto auto;
+   justify-content: center;
+   align-content: center;
+   gap: 15px 20px;
+   margin: 20px;
+   width: 90%;
+   height: 340px;
+   border: 1px solid rgb(100, 100, 100);
+}
+
+.key {
+   display: flex;
+   width: 65px;
+   height: 45px;
+   border: 1px solid black;
+   justify-content: center;
+   align-items: center;
+   font-size: 25px;
+   font-weight: 900;
+   box-shadow: 2px 2px 2.5px 2.5px black;
+   border-radius: 5px;
+   background-color: hsl(0, 0%, 95%);
+}
+
+.key:hover {
+   background-color: hsl(0, 0%, 80%);
+}
+
+.key:active {
+   box-shadow: 1px 1px 1px 1px black;
+   transition: 0.05s;
+}
+
+.key--min {
+   height: 30px;
+}
+
+.key--max {
+   height: 103px;
+   grid-area: 5 / 4 /span 2 / 5;
+}
+
+.key--dark {
+   background-color: hsl(0, 0%, 60%);
+}
+
+.key--dark:hover {
+   background-color: hsl(0, 0%, 50%);
+}
+
+.key--on {
+   background-color: hsl(0, 100%, 50%);
+}
+
+.key--on:hover {
+   background-color: hsl(0, 100%, 45%);
+}
