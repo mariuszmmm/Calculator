@@ -47,12 +47,12 @@ const addEvent = () => {
    keyPlusToMinusElement.addEventListener("click", consoleInfo);
    keySquareElement.addEventListener("click", consoleInfo);
    keyProcentElement.addEventListener("click", consoleInfo);
-   keyDivisionElement.addEventListener("click", consoleInfo);
-   keyXElement.addEventListener("click", consoleInfo);
-   keyMinusElement.addEventListener("click", minus);
-   keyPlusElement.addEventListener("click", plus);
+   keyDivisionElement.addEventListener("click", actionOnClick);
+   keyXElement.addEventListener("click", actionOnClick);
+   keyMinusElement.addEventListener("click", actionOnClick);
+   keyPlusElement.addEventListener("click", actionOnClick);
    keyEqualElement.addEventListener("click", equal);
-   keyCommaElement.addEventListener("click", consoleInfo);
+   keyCommaElement.addEventListener("click", actionOnClick);
    key0Element.addEventListener("click", digitEnter);
    key1Element.addEventListener("click", digitEnter);
    key2Element.addEventListener("click", digitEnter);
@@ -70,12 +70,12 @@ const removeEvent = () => {
    keyPlusToMinusElement.removeEventListener("click", consoleInfo);
    keySquareElement.removeEventListener("click", consoleInfo);
    keyProcentElement.removeEventListener("click", consoleInfo);
-   keyDivisionElement.removeEventListener("click", consoleInfo);
-   keyXElement.removeEventListener("click", consoleInfo);
-   keyMinusElement.removeEventListener("click", minus);
-   keyPlusElement.removeEventListener("click", plus);
+   keyDivisionElement.removeEventListener("click", actionOnClick);
+   keyXElement.removeEventListener("click", actionOnClick);
+   keyMinusElement.removeEventListener("click", actionOnClick);
+   keyPlusElement.removeEventListener("click", actionOnClick);
    keyEqualElement.removeEventListener("click", equal);
-   keyCommaElement.removeEventListener("click", consoleInfo);
+   keyCommaElement.removeEventListener("click", actionOnClick);
    key0Element.removeEventListener("click", digitEnter);
    key1Element.removeEventListener("click", digitEnter);
    key2Element.removeEventListener("click", digitEnter);
@@ -113,8 +113,6 @@ const digitEnter = (event) => {
       display = "";
       result = "";
    }
-
-
 
    if (display === "0") { display = "" };
    if ((Number(display)) > 99999999) return;
@@ -154,76 +152,61 @@ const numberUndo = (event) => {
    displayElement.value = display;
 }
 
-const plus = () => {
+const resultBeforeAction = () => {
+   if (a && action && b && !result) {
+      displayElement.value = calculate(Number(a), action, Number(b)
+      );
+      display = displayElement.value;
+      a = displayElement.value;
+      b = "";
+   };
+}
+
+const resetResult = () => {
    if (result && b) {
       a = result;
       b = "";
       action = "";
       result = "";
    }
-   if (a && action && b && !result) {
-      displayElement.value = Number(a) + Number(b) + "";
-      display = displayElement.value;
-      a = displayElement.value;
-      b = "";
-   };
-   a ? (action = "plus") : (action = "");
+}
+
+const actionOnClick = (event) => {
+   resetResult();
+   resultBeforeAction();
+   a ? (action = event.target.innerText) : (action = "");
    consoleAction();
 }
 
-const minus = () => {
-   if (result && b) {
-      a = result;
-      b = "";
-      action = "";
-      result = "";
+const calculate = (a, operator, b) => {
+   switch (operator) {
+      case "+":
+         return a + b;
+      case "-":
+         return a - b;
+      case "x":
+         return a * b;
+      case "/":
+         return a / b;
+      default:
+         return NaN;
    }
-   if (a && action && b && !result) {
-      displayElement.value = Number(a) - Number(b) + "";
-      display = displayElement.value;
-      a = displayElement.value;
-      b = "";
-   };
-
-   a ? (action = "minus") : (action = "");
-   consoleAction();
-
-}
+};
 
 const equal = () => {
    consoleAction();
-
-   if (!a && !b && result) {
-      action = "";
-   }
+   // (!a && !b && result) ? action = "" : action;
    if (b) {
-      switch (action) {
-         case ("plus"):
-            if ((a || result) && action && b) {
-               (displayElement.value =
-                  (!result ? Number(a) : Number(result))
-                  +
-                  Number(b) + "");
-            }
-            a = "";
-            result = displayElement.value;
-            display = displayElement.value;
-            break;
-
-         case ("minus"):
-            if ((a || result) && action && b) {
-               (displayElement.value =
-                  (!result ? Number(a) : Number(result))
-                  -
-                  Number(b) + "");
-            }
-            a = "";
-            result = displayElement.value;
-            display = displayElement.value;
-            break;
-
-         default: return
+      if ((a || result) && action) {
+         displayElement.value = calculate(
+            (!result ? Number(a) : Number(result)),
+            action,
+            Number(b)
+         );
       }
+      a = "";
+      result = displayElement.value;
+      display = displayElement.value;
    }
    consoleAction();
 }
