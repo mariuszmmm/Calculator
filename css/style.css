@@ -32,6 +32,8 @@ body {
 }
 
 .inputDisplay {
+   background-color: white;
+   color: black;
    font-family: 'Quantico', sans-serif;
    margin: 5px;
    width: 90%;
@@ -39,7 +41,7 @@ body {
    border: 1px solid black;
    font-size: 50px;
    text-align: right;
-   padding: 0 10px;
+   padding: 0 5px;
 }
 
 .containerKeys {
@@ -75,6 +77,7 @@ body {
 .key:active {
    box-shadow: 1px 1px 1px 1px black;
    transition: 0.05s;
+   color: rgb(70, 70, 70);
 }
 
 .key--min {
