@@ -1,10 +1,4 @@
 {
-   let display;
-   let componentA;
-   let action;
-   let componentB;
-   let result;
-
    const addEvents = () => {
       const keyElements = document.querySelectorAll(".js-key");
 
@@ -263,7 +257,15 @@
       const offElement = document.querySelector(".js-off");
       onElement.addEventListener("click", calculatorOn);
       offElement.addEventListener("click", calculatorOff);
+
+      let display;
+      let componentA;
+      let action;
+      let componentB;
+      let result;
    };
+
+
 
    init();
 }
