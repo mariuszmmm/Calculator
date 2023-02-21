@@ -201,7 +201,8 @@
       };
 
       const squareRoot = () => {
-         display = Math.sqrt(Number(display)) + "";
+         if (display !== "") { display = Math.sqrt(Number(display)) + "" }
+         else return;
          verificationDisplay();
          if (result !== "") {
             componentA = Number(display);
@@ -209,9 +210,8 @@
             result = "";
          } else {
             selectComponent();
-         }
+         };
          viewResult();
-         display = "";
          consoleDisplay();
       }
 
