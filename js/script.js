@@ -113,10 +113,7 @@
          };
       };
 
-      const calculateResult = () => {
-         result = calculate(componentA, action, componentB);
-         display = result + "";
-
+      const verificationDisplay = () => {
          let displayLength = (`${Math.round(Number(display))}`.length);
 
          if (displayLength <= 9) {
@@ -137,7 +134,12 @@
             ||
             (display.charAt(display.length - 1) === ".")
          ) { display = display.slice(0, -1) };
+      };
 
+      const calculateResult = () => {
+         result = calculate(componentA, action, componentB);
+         display = result + "";
+         verificationDisplay();
       };
 
       const viewResult = () => {
@@ -200,6 +202,7 @@
 
       const squareRoot = () => {
          display = Math.sqrt(Number(display)) + "";
+         verificationDisplay();
          if (result !== "") {
             componentA = Number(display);
             componentB = "";
