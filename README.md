@@ -1,19 +1,14 @@
 # **Calculator**
 
-A simple calculator allowing to perform arithmetic operations such as addition, subtraction, multiplication, division, square root, and percentages. 
-It has an on/off switch, a function to clear the last entered digit, and a toggle for changing the sign (+/-).
-#
- Check it out:     -->    https://mariuszmmm.github.io/calculator/    <--
-#
-![Calculator](/calculator.png)
+A simple calculator that allows you to perform basic arithmetic operations such as addition, subtraction, multiplication, division, square root calculations, and percentage computations. It features an on/off switch, a function to clear the last entered digit, and a toggle for changing the sign (+/-).
 
+Check it out: [Calculator](https://mariuszmmm.github.io/calculator/)
+
+![Calculator](/calculator.png)
 
 ## Technologies Used
   
-- Javascript ES6
-
-- HTML 5
-
+- JavaScript ES6
+- HTML5
 - CSS
-
-- BEM convention
+- BEM (Block Element Modifier) Convention
